@@ -1,0 +1,52 @@
+{
+  "name": "windmill-dashboard",
+  "version": "1.0.2",
+  "description": "A multi theme, completely accessible, with components and pages examples, ready for production dashboard.",
+  "scripts": {
+    "tailwind": "tailwindcss build public/assets/css/tailwind.css -o public/assets/css/tailwind.output.css",
+    "build": "env NODE_ENV=production postcss public/assets/css/tailwind.css -o public/assets/css/tailwind.output.css",
+    "cz": "git-cz",
+    "release": "release-it"
+  },
+  "author": "Estevan Maito <ejmaito@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@release-it/conventional-changelog": "^2.0.1",
+    "@tailwindcss/custom-forms": "0.2.1",
+    "autoprefixer": "^10.2.5",
+    "color": "3.1.2",
+    "commitizen": "^4.2.4",
+    "cssnano": "^5.0.3",
+    "cz-conventional-changelog": "3.2.0",
+    "postcss-cli": "^8.3.1",
+    "release-it": "^14.6.2",
+    "tailwindcss": "^2.1.2",
+    "tailwindcss-multi-theme": "1.0.3"
+  },
+  "keywords": [
+    "tailwind",
+    "windmill",
+    "dashboard",
+    "template",
+    "admin"
+  ],
+  "release-it": {
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "publish": false
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular",
+        "infile": "CHANGELOG.md"
+      }
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
