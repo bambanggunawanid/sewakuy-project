@@ -1,5 +1,5 @@
 {
-  "name": "windmill-dashboard",
+  "name": "sewakuy",
   "version": "1.0.2",
   "description": "A multi theme, completely accessible, with components and pages examples, ready for production dashboard.",
   "scripts": {
@@ -12,7 +12,7 @@
   "license": "MIT",
   "devDependencies": {
     "@release-it/conventional-changelog": "^2.0.1",
-    "@tailwindcss/custom-forms": "0.2.1",
+    "@tailwindcss/custom-forms": "^0.2.1",
     "autoprefixer": "^10.2.5",
     "color": "3.1.2",
     "commitizen": "^4.2.4",
@@ -48,5 +48,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "@tailwindcss/forms": "^0.3.2"
   }
 }

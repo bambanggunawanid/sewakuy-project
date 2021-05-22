@@ -32,8 +32,21 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Shop::index');
+
+// Shop Route
+
+// Admin Dasboard Route
+$routes->get('/', 'Pages::index');
+$routes->get('/login', 'Pages::login');
+$routes->get('/register', 'Pages::register');
+$routes->get('/forgot-password', 'Pages::forgotPassword');
+
 $routes->get('/admin', 'Admin::index');
+$routes->get('/admin/orders', 'Admin::orders');
+$routes->get('/admin/product', 'Admin::product');
+$routes->get('/admin/promotion', 'Admin::promotion');
+$routes->get('/admin/wallet', 'Admin::wallet');
+
 
 /*
  * --------------------------------------------------------------------
