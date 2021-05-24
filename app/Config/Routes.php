@@ -35,12 +35,21 @@ $routes->setAutoRoute(true);
 
 // Shop Route
 
-// Admin Dasboard Route
-$routes->get('/', 'Pages::index');
-$routes->get('/login', 'Pages::login');
-$routes->get('/register', 'Pages::register');
-$routes->get('/forgot-password', 'Pages::forgotPassword');
+// Products
+$routes->get('/', 'Products::index');
+$routes->get('/product/(:segment)', 'Products::detail/$1');
 
+// Pages
+$routes->get('/about', 'Pages::about');
+$routes->get('/faq', 'Pages::faq');
+
+// Auth
+$routes->get('/login', 'Auth::index');
+$routes->post('/login', 'Auth::login');
+$routes->get('/register', 'Auth::register');
+$routes->get('/forgot-password', 'Auth::forgotPassword');
+
+// Admin
 $routes->get('/admin', 'Admin::index');
 $routes->get('/admin/orders', 'Admin::orders');
 $routes->get('/admin/product', 'Admin::product');

@@ -14,7 +14,7 @@
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer
     ></script>
-    <script src="<?= base_url('assets/js/init-alpine.js') ?>"></script>
+    <script src="<?= base_url('assets/js/init-alpine.js') ?>" defer></script>
   </head>
   <body>
     <?= $this->renderSection('content') ?>

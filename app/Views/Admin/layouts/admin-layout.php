@@ -8,14 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico') ?>" type="image/x-icon">
     <link rel="stylesheet" href="<?= base_url('assets/css/tailwind.output.css') ?>" />
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
     <script src="<?= base_url('assets/js/init-alpine.js') ?>"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
     <?php if ($title == 'Dashboard' || $title == 'Promotion') : ?>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
+        <script src="<?= base_url('assets/js/charts-lines.js') ?>" defer></script>
+        <script src="<?= base_url('assets/js/charts-pie.js') ?>" defer></script>
     <?php endif ?>
-    <script src="<?= base_url('assets/js/charts-lines.js') ?>" defer></script>
-    <script src="<?= base_url('assets/js/charts-pie.js') ?>" defer></script>
 </head>
 
 <body>
@@ -117,7 +117,7 @@
                 </ul>
                 <div class="px-6 my-6">
                     <button class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
-                        Create account
+                        Upload New Product
                         <span class="ml-2" aria-hidden="true">+</span>
                     </button>
                 </div>
