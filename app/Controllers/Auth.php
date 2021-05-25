@@ -23,7 +23,21 @@ class Auth extends BaseController
             $this->_login();
         }
     }
-
+    public function login()
+    {
+        $data = ['title' => 'Login Account'];
+        return view('pages/login', $data);
+    }
+    public function register()
+    {
+        $data = ['title' => 'Register Account'];
+        return view('pages/create-account', $data);
+    }
+    public function forgotPassword()
+    {
+        $data = ['title' => 'Forgot Password'];
+        return view('pages/forgot-password', $data);
+    }
     // func to login logic
     private function _login()
     {

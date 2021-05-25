@@ -42,6 +42,7 @@ $routes->get('/product/(:segment)', 'Products::detail/$1');
 // Pages
 $routes->get('/about', 'Pages::about');
 $routes->get('/faq', 'Pages::faq');
+$routes->get('/coming-soon', 'Pages::comingSoon');
 
 // Auth
 $routes->get('/login', 'Auth::index');

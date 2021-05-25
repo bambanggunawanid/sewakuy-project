@@ -4,7 +4,7 @@
   <!-- Breadcrumbs -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center space-x-2 text-gray-400 text-sm">
-      <a href="#" class="hover:underline hover:text-gray-600">Sewakuy</a>
+      <a href="#" class="hover:underline hover:text-gray-600">Home</a>
       <span>
         <svg class="h-5 w-5 leading-none text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -15,7 +15,7 @@
   </div>
   <!-- ./ Breadcrumbs -->
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 h-screen">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 min-h-screen">
     <div class="flex flex-col md:flex-row -mx-4">
       <div class="md:flex-1 px-4">
         <div x-data="{ image: 1 }" x-cloak>
@@ -50,13 +50,13 @@
 
         <div class="flex items-center space-x-4 my-4">
           <div>
-            <div class="rounded-lg bg-gray-100 flex py-2 px-3">
+            <div class="rounded-lg bg-gray-100 flex py-2 px-6">
               <span class="text-blue-400 mr-1 mt-1">Rp</span>
               <span class="font-medium text-blue-600 text-2xl"><?= number_format($product['price'], 0, ',', '.') ?></span>
             </div>
           </div>
         </div>
-        <p class="text-gray-500 mb-20"><?= $product['descriptions'] ?></p>
+        <p class="text-gray-500 mb-20 md:mb-36"><?= $product['descriptions'] ?></p>
         <form action="#" method="get">
           <div class="flex py-4 space-x-4">
             <div class="relative">
@@ -73,10 +73,10 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
               </svg>
             </div>
-            <button type="submit" class="h-14 px-6 py-2 font-semibold rounded-xl border-2 border-blue-600 text-blue-600 hover:bg-blue-500 hover:text-white flex-1">
+            <button type="submit" class="md:h-14 md:px-6 md:py-2 font-semibold rounded-xl border-2 border-blue-600 text-blue-600 hover:bg-blue-500 hover:text-white flex-1">
               Buy Now
             </button>
-            <button type="submit" class="h-14 px-6 py-2 font-semibold rounded-xl bg-blue-600 hover:bg-blue-500 text-white flex-1">
+            <button type="submit" class="md:h-14 md:px-6 md:py-2 font-semibold rounded-xl bg-blue-600 hover:bg-blue-500 text-white flex-1">
               Add to Cart
             </button>
           </div>

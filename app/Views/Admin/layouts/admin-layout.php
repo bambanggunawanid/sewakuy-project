@@ -25,7 +25,9 @@
             <div class="py-4 text-gray-500 dark:text-gray-400">
                 <a class="ml-6 flex items-center text-lg font-bold text-gray-800 dark:text-gray-200" href="/">
                     <img src="<?= base_url('assets/img/logo.png') ?>" alt="Sewakuy Logo" width="40" class="hidden md:block mr-4">
-                    Sewakuy
+                    <p class="">
+                        Sewakuy
+                    </p>
                 </a>
                 <ul class="mt-6" id="side-menu">
                     <li class="relative px-6 py-3">
@@ -116,10 +118,12 @@
                     </li>
                 </ul>
                 <div class="px-6 my-6">
-                    <button class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
-                        Upload New Product
-                        <span class="ml-2" aria-hidden="true">+</span>
-                    </button>
+                    <a href="/admin/create">
+                        <button class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
+                            Upload New Product
+                            <span class="ml-2 text-xl" aria-hidden="true">+</span>
+                        </button>
+                    </a>
                 </div>
             </div>
         </aside>

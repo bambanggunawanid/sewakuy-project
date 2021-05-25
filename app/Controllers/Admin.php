@@ -29,19 +29,11 @@ class Admin extends BaseController
         $data = ['title' => 'My Wallet'];
         echo view('admin/wallet', $data);
     }
-    public function login()
-    {
-        $data = ['title' => 'Login Account'];
-        return view('pages/login',$data);
-    }
-    public function register()
-    {
-        $data = ['title' => 'Register Account'];
-        return view('pages/create-account',$data);
-    }
-    public function forgotPassword()
-    {
-        $data = ['title' => 'Forgot Password'];
-        return view('pages/forgot-password',$data);
+
+    public function create(){
+        $data = [
+            'title'=> 'Upload new Product'
+        ];
+        return view('admin/upload-product',$data);
     }
 }

@@ -74,14 +74,17 @@
 <body class="bg-white text-gray-600 antialiased work-sans leading-normal text-base tracking-normal">
     <!--Nav-->
     <div class="w-full container-fluid bg-blue-600 md:flex text-white text-xs py-2 justify-end hidden">
-        <a href="#">
-            <p class="mx-4">Tentang Sewakuy</p>
+        <a href="/coming-soon">
+            <p class="mx-4 hover:underline">Tentang Sewakuy</p>
         </a>
-        <a href="#">
-            <p class="mx-4">Mitra Sewakuy</p>
+        <a href="/coming-soon">
+            <p class="mx-4 hover:underline">Mitra Sewakuy</p>
         </a>
-        <a href="#">
-            <p class="mx-4">Sewakuy Care</p>
+        <a href="/coming-soon">
+            <p class="mx-4 hover:underline">Sewakuy Care</p>
+        </a>
+        <a href="/admin">
+            <p class="mx-4 hover:underline">Admin Dashboard</p>
         </a>
     </div>
     <nav id="header" class="w-full z-30 top-0 py-1">

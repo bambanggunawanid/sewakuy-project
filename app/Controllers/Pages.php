@@ -11,4 +11,11 @@ class Pages extends BaseController
         ];
         return view('pages/about', $data);
     }
+    public function comingSoon()
+    {
+        $data = [
+            'title' => 'Coming Soon!',
+        ];
+        return view('pages/coming-soon', $data);
+    }
 }

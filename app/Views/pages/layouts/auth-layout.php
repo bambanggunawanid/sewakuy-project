@@ -15,8 +15,14 @@
       defer
     ></script>
     <script src="<?= base_url('assets/js/init-alpine.js') ?>" defer></script>
+    <style>
+        .body-bg {
+            background-color: #9921e8;
+            background-image: linear-gradient(315deg, #9921e8 0%, #5f72be 74%);
+        }
+    </style>
   </head>
-  <body>
+  <body class="body-bg">
     <?= $this->renderSection('content') ?>
   </body>
 </html>
