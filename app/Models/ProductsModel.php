@@ -8,11 +8,13 @@ class ProductsModel extends Model
 {
     protected $table      = 'products';
     protected $useTimestamps = true;
+    protected $allowedFields = ['name', 'uuid', 'image_id', 'price', 'descriptions', 'category_id', 'stock', 'condition_product', 'image1','image2','image3'];
 
-    public function getProduct($id = false){
-        if($id == false){
+    public function getProduct($uuid = false)
+    {
+        if ($uuid == false) {
             return $this->findAll();
         }
-        return $this->where(['id' => $id])->first();
+        return $this->where(['uuid' => $uuid])->first();
     }
 }

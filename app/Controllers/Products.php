@@ -1,15 +1,9 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\ProductsModel;
 
 class Products extends BaseController
 {
-    protected $productModel;
-    public function __construct()
-    {
-        $this->productModel = new ProductsModel();
-    }
     public function index()
     {
         $data = [
@@ -19,13 +13,17 @@ class Products extends BaseController
 
         return view('product/index', $data);
     }
-    public function detail($id)
+    public function detail($uuid)
     {
-        $productDetail = $this->productModel->getProduct($id);
+        $productDetail = $this->productModel->getProduct($uuid);
         $data = [
-            'title' => $productDetail['name'],
-            'product' =>$productDetail,
+            'title' => "tes",
+            'product' => $productDetail,
         ];
+        if(empty($uuid)){
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Your product not found');
+        }
         return view('product/detail', $data);
     }
+
 }

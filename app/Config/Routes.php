@@ -56,6 +56,7 @@ $routes->get('/admin/orders', 'Admin::orders');
 $routes->get('/admin/product', 'Admin::product');
 $routes->get('/admin/promotion', 'Admin::promotion');
 $routes->get('/admin/wallet', 'Admin::wallet');
+$routes->post('/admin/save', 'Admin::save');
 
 
 /*

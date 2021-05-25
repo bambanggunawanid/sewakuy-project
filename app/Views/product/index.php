@@ -8,7 +8,7 @@
         <div class="carousel-item absolute opacity-0" style="height:50vh;">
             <div class="h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('<?= base_url('assets/img/banner-1.jpg') ?>');">
                 <div class="container mx-auto">
-                    <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
+                    <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-16 tracking-wide">
                         <p class="text-white font-bold md:text-5xl text-2xl text-center md:text-left my-4 filter drop-shadow-lg">Rent & Travel<br>Go anywhere without hassle</p>
                         <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">view product</a>
                     </div>
@@ -24,7 +24,7 @@
             <div class="h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('<?= base_url('assets/img/banner-2.jpg') ?>');">
 
                 <div class="container mx-auto">
-                    <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
+                    <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-16 tracking-wide">
                         <p class="text-white font-bold md:text-5xl text-2xl text-center md:text-left my-4 filter drop-shadow-lg">Anywhere and Everywere<br>Just use your phone</p>
                         <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">view product</a>
                     </div>
@@ -40,7 +40,7 @@
         <div class="carousel-item absolute opacity-0" style="height:50vh;">
             <div class="h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-bottom" style="background-image: url('<?= base_url('assets/img/banner-3.jpg') ?>');">
                 <div class="container mx-auto">
-                    <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
+                    <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-16 tracking-wide">
                         <p class="text-white font-bold md:text-5xl text-2xl text-center md:text-left my-4 filter drop-shadow-lg">Renting car free driver<br>Coming Soon!</p>
                         <a class="text-white text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black" href="#">view product</a>
                     </div>
@@ -81,28 +81,27 @@
                 </div>
             </div>
         </nav>
-        <?php foreach ($products as $p) : ?>
-            <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-                <a href="/product/<?= $p['id'] ?>">
-                    <img class="hover:grow hover:shadow-lg" src="image/<//?= $p['image'] ?>">
-                    <div class="pt-3 flex items-center justify-between">
-                        <p class=""><?= $p['name'] ?></p>
-                    </div>
-                    <div class="flex items-center justify-between py-4">
-                        <p class="text-gray-700 font-medium text-lg"><span class="text-sm">Rp</span> <?= number_format($p['price'], 0, ',', '.') ?></p>
-                        <div class="flex items-center">
-                            <span class="mx-2 font-bold text-yellow-300">5</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#FCE205" class="bi bi-star-fill" viewBox="0 0 16 16">
-                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                            </svg>
-                            <span class="text-gray-600 ml-2">
-                                (3 sold)
-                            </span>
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-6 p-12">
+            <?php foreach ($products as $p) : ?>
+                <div class="py-6 px-4 flex shadow-lg rounded-2xl max-w-md">
+                    <a href="/product/<?= $p['uuid'] ?>">
+                        <img class="hover:grow hover:shadow-lg" src="<?= base_url("/image/image1/" . $p['image1']) ?>">
+                        <div class="pt-3 flex items-center justify-between">
+                            <p class=""><?= $p['name'] ?></p>
                         </div>
-                    </div>
-                </a>
-            </div>
-        <?php endforeach ?>
+                        <div class="flex items-center justify-between py-4">
+                            <p class="text-gray-700 font-medium text-lg"><span class="text-sm">Rp</span> <?= number_format($p['price'], 0, ',', '.') ?></p>
+                            <div class="flex items-center">
+                                <span class="mx-2 font-bold text-yellow-300">5</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#FCE205" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach ?>
+        </div>
     </div>
 </section>
 <?= $this->endSection() ?>

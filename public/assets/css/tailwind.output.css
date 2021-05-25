@@ -22684,6 +22684,10 @@ video {
   min-width: 75%;
 }
 
+.min-w-30rem {
+  min-width: 36rem;
+}
+
 .object-contain {
   -o-object-fit: contain;
      object-fit: contain;
@@ -48733,7 +48737,11 @@ video {
 }
 
 .brightness-0 {
-  --tw-brightness: brightness(0);
+  --tw-brightness: brightness(hover);
+}
+
+.brightness-1 {
+  --tw-brightness: brightness(focus);
 }
 
 .brightness-50 {
@@ -48972,7 +48980,11 @@ video {
 }
 
 .backdrop-brightness-0 {
-  --tw-backdrop-brightness: brightness(0);
+  --tw-backdrop-brightness: brightness(hover);
+}
+
+.backdrop-brightness-1 {
+  --tw-backdrop-brightness: brightness(focus);
 }
 
 .backdrop-brightness-50 {
@@ -61105,6 +61117,10 @@ video {
 
   .sm\:min-w-3\/4 {
     min-width: 75%;
+  }
+
+  .sm\:min-w-30rem {
+    min-width: 36rem;
   }
 
   .sm\:object-contain {
@@ -75677,7 +75693,11 @@ video {
   }
 
   .sm\:brightness-0 {
-    --tw-brightness: brightness(0);
+    --tw-brightness: brightness(hover);
+  }
+
+  .sm\:brightness-1 {
+    --tw-brightness: brightness(focus);
   }
 
   .sm\:brightness-50 {
@@ -75884,7 +75904,11 @@ video {
   }
 
   .sm\:backdrop-brightness-0 {
-    --tw-backdrop-brightness: brightness(0);
+    --tw-backdrop-brightness: brightness(hover);
+  }
+
+  .sm\:backdrop-brightness-1 {
+    --tw-backdrop-brightness: brightness(focus);
   }
 
   .sm\:backdrop-brightness-50 {
@@ -87802,6 +87826,10 @@ video {
 
   .md\:min-w-3\/4 {
     min-width: 75%;
+  }
+
+  .md\:min-w-30rem {
+    min-width: 36rem;
   }
 
   .md\:object-contain {
@@ -102374,7 +102402,11 @@ video {
   }
 
   .md\:brightness-0 {
-    --tw-brightness: brightness(0);
+    --tw-brightness: brightness(hover);
+  }
+
+  .md\:brightness-1 {
+    --tw-brightness: brightness(focus);
   }
 
   .md\:brightness-50 {
@@ -102581,7 +102613,11 @@ video {
   }
 
   .md\:backdrop-brightness-0 {
-    --tw-backdrop-brightness: brightness(0);
+    --tw-backdrop-brightness: brightness(hover);
+  }
+
+  .md\:backdrop-brightness-1 {
+    --tw-backdrop-brightness: brightness(focus);
   }
 
   .md\:backdrop-brightness-50 {
@@ -114499,6 +114535,10 @@ video {
 
   .lg\:min-w-3\/4 {
     min-width: 75%;
+  }
+
+  .lg\:min-w-30rem {
+    min-width: 36rem;
   }
 
   .lg\:object-contain {
@@ -129071,7 +129111,11 @@ video {
   }
 
   .lg\:brightness-0 {
-    --tw-brightness: brightness(0);
+    --tw-brightness: brightness(hover);
+  }
+
+  .lg\:brightness-1 {
+    --tw-brightness: brightness(focus);
   }
 
   .lg\:brightness-50 {
@@ -129278,7 +129322,11 @@ video {
   }
 
   .lg\:backdrop-brightness-0 {
-    --tw-backdrop-brightness: brightness(0);
+    --tw-backdrop-brightness: brightness(hover);
+  }
+
+  .lg\:backdrop-brightness-1 {
+    --tw-backdrop-brightness: brightness(focus);
   }
 
   .lg\:backdrop-brightness-50 {
@@ -141196,6 +141244,10 @@ video {
 
   .xl\:min-w-3\/4 {
     min-width: 75%;
+  }
+
+  .xl\:min-w-30rem {
+    min-width: 36rem;
   }
 
   .xl\:object-contain {
@@ -155768,7 +155820,11 @@ video {
   }
 
   .xl\:brightness-0 {
-    --tw-brightness: brightness(0);
+    --tw-brightness: brightness(hover);
+  }
+
+  .xl\:brightness-1 {
+    --tw-brightness: brightness(focus);
   }
 
   .xl\:brightness-50 {
@@ -155975,7 +156031,11 @@ video {
   }
 
   .xl\:backdrop-brightness-0 {
-    --tw-backdrop-brightness: brightness(0);
+    --tw-backdrop-brightness: brightness(hover);
+  }
+
+  .xl\:backdrop-brightness-1 {
+    --tw-backdrop-brightness: brightness(focus);
   }
 
   .xl\:backdrop-brightness-50 {
@@ -167893,6 +167953,10 @@ video {
 
   .\32xl\:min-w-3\/4 {
     min-width: 75%;
+  }
+
+  .\32xl\:min-w-30rem {
+    min-width: 36rem;
   }
 
   .\32xl\:object-contain {
@@ -182465,7 +182529,11 @@ video {
   }
 
   .\32xl\:brightness-0 {
-    --tw-brightness: brightness(0);
+    --tw-brightness: brightness(hover);
+  }
+
+  .\32xl\:brightness-1 {
+    --tw-brightness: brightness(focus);
   }
 
   .\32xl\:brightness-50 {
@@ -182672,7 +182740,11 @@ video {
   }
 
   .\32xl\:backdrop-brightness-0 {
-    --tw-backdrop-brightness: brightness(0);
+    --tw-backdrop-brightness: brightness(hover);
+  }
+
+  .\32xl\:backdrop-brightness-1 {
+    --tw-backdrop-brightness: brightness(focus);
   }
 
   .\32xl\:backdrop-brightness-50 {

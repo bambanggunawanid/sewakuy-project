@@ -10,7 +10,8 @@
     <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico') ?>" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Roboto:ital,wght@0,300;0,400;0,500;0,900;1,700&display=swap" rel="stylesheet">
-    <script src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+    <script src="<?= base_url('assets/js/init-alpine.js') ?>"></script>
     <style>
         .work-sans {
             font-family: 'Roboto', sans-serif;
@@ -88,7 +89,7 @@
         </a>
     </div>
     <nav id="header" class="w-full z-30 top-0 py-1">
-        <div class="w-full mx-auto flex flex-wrap items-center justify-between px-2 py-2">
+        <div class="min-w-full mx-auto flex items-center justify-between px-4 md:px-6 py-2 flex-wrap">
             <label for="menu-toggle" class="cursor-pointer md:hidden block ml-2 mr-4">
                 <svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                     <title>menu</title>
@@ -125,18 +126,20 @@
             </div>
 
             <!-- Search input -->
-            <div class="flex justify-center flex-1 ">
-                <div class="relative w-full max-w-xl focus-within:text-blue-500">
-                    <div class="absolute inset-y-0 flex items-center pl-2 text-blue-500">
-                        <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                        </svg>
+            <form action="product/" method="GET">
+                <div class="flex justify-center md:min-w-30rem w-56">
+                    <div class="relative w-full focus-within:text-blue-600">
+                        <div class="absolute inset-y-0 flex items-center pl-2 text-blue-600">
+                            <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <input class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-blue-300 focus:outline-none focus:shadow-outline-blue form-input" type="text" placeholder="Search for product" aria-label="Search" />
                     </div>
-                    <input class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-blue-300 focus:outline-none focus:shadow-outline-blue form-input" type="text" placeholder="Search for product" aria-label="Search" />
                 </div>
-            </div>
+            </form>
 
-            <div class="flex items-center md:mr-40" id="nav-content">
+            <div class="flex items-center justify-self-end md:px-10" id="nav-content">
                 <a class="md:inline-block hidden no-underline hover:text-black " href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
@@ -169,19 +172,19 @@
                         </div>
                         <div class="flex my-10 justify-between">
                             <div class="d-block">
-                                <a href="#">
+                                <a href="/coming-soon">
                                     <div class="border-2 px-8 py-2 rounded-xl my-4 text-center hover:bg-white hover:text-blue-600 ">FAQ (Tanya Jawab)</div>
                                 </a>
-                                <a href="#">
+                                <a href="/coming-soon">
                                     <div class="border-2 px-8 py-2 rounded-xl my-4 text-center hover:bg-white hover:text-blue-600 ">Panduan Penyewaan</div>
                                 </a>
-                                <a href="#">
+                                <a href="/coming-soon">
                                     <div class="border-2 px-8 py-2 rounded-xl my-4 text-center hover:bg-white hover:text-blue-600 ">Panduan Mitra</div>
                                 </a>
-                                <a href="#">
+                                <a href="/coming-soon">
                                     <div class="border-2 px-8 py-2 rounded-xl my-4 text-center hover:bg-white hover:text-blue-600 ">Panduan Keamanan</div>
                                 </a>
-                                <a href="#">
+                                <a href="/coming-soon">
                                     <div class="border-2 px-8 py-2 rounded-xl my-4 text-center hover:bg-white hover:text-blue-600 ">Hubungi Sewakuy</div>
                                 </a>
                             </div>

@@ -16,31 +16,29 @@
   <!-- ./ Breadcrumbs -->
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 min-h-screen">
-    <div class="flex flex-col md:flex-row -mx-4">
-      <div class="md:flex-1 px-4">
+    <div class="flex flex-col md:flex-row -mx-4 ">
+      <div class="md:flex-1 px-4 ">
         <div x-data="{ image: 1 }" x-cloak>
-          <div class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4">
-            <div x-show="image === 1" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-              <span class="text-5xl">1</span>
+          <div class="h-64 md:h-96 rounded-lg bg-gray-100 overflow-hidden mb-8">
+            <div x-show="image === 1" class="h-64 md:h-80 rounded-lg bg-gray-100 flex items-center justify-center">
+              <img src="<?= base_url("/image/image1/" . $product['image1']) ?>" alt="">
             </div>
-
             <div x-show="image === 2" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-              <span class="text-5xl">2</span>
+              <img src="<?= base_url("/image/image2/" . $product['image2']) ?>" alt="">
             </div>
-
             <div x-show="image === 3" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-              <span class="text-5xl">3</span>
+              <img src="<?= base_url("/image/image3/" . $product['image3']) ?>" alt="" >
             </div>
           </div>
 
-          <div class="flex -mx-2 mb-4">
-            <template x-for="i in 3">
-              <div class="flex-1 px-2">
-                <button x-on:click="image = i" :class="{ 'ring-2 ring-blue-300 ring-inset': image === i }" class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center">
-                  <span x-text="i" class="text-2xl"></span>
+          <div class="flex gap-2 -mx-2 mb-4 ">
+            <?php for ($i = 1; $i <= 3; $i++) : ?>
+              <div class="flex-1 px-2 ">
+                <button x-on:click="image = <?= $i ?>" :class="{ 'ring-2 ring-blue-300 ring-inset': image === <?= $i ?> }" class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center overflow-hidden hover:opacity-75">
+                  <img src="<?= base_url("/image/image" . $i . "/" . $product['image' . $i]) ?>" alt="" >
                 </button>
               </div>
-            </template>
+            <?php endfor ?>
           </div>
         </div>
       </div>
