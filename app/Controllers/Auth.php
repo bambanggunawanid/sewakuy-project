@@ -25,6 +25,9 @@ class Auth extends BaseController
             $validation = \Config\Services::validation();
             return redirect()->to('/login')->withInput()->with('validation', $validation);
         }
+        session();
+        // $_SESSION['id'] =
+        return redirect()->to('/');
     }
     public function register()
     {

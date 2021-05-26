@@ -125,12 +125,16 @@
                   <?= $ap['stock'] ?>
                 </td>
                 <td class="flex text-xs py-3">
-                  <a href="/admin/product/edit" class="px-4 py-2 mr-2 font-semibold leading-tight text-yellow-400 bg-yellow-100 rounded-full dark:bg-yellow-400 dark:text-yellow-100">
+                  <a href="/admin/edit/<?= $ap['uuid'] ?>" class="px-4 py-2 mr-2 font-semibold leading-tight text-yellow-400 bg-yellow-100 rounded-full dark:bg-yellow-400 dark:text-yellow-100">
                     Edit
                   </a>
-                  <a href="/admin/product/delete" class="px-4 py-2 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100">
-                    Delete
-                  </a>
+                  <form action="/admin/<?= $ap['id'] ?>" method="post">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="_method" id="" value="Delete">
+                    <button type="submit" class="px-4 py-2 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100" onclick="return confirm('sure?')">
+                      Delete
+                    </button>
+                  </form>
                 </td>
               </tr>
             <?php endforeach ?>

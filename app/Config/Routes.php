@@ -53,11 +53,14 @@ $routes->get('/forgot-password', 'Auth::forgotPassword');
 
 // Admin
 $routes->get('/admin', 'Admin::index');
+$routes->get('/admin/edit/(:segment)', 'Admin::edit/$1');
+$routes->post('/admin/update/(:segment)', 'Admin::update/$1');
 $routes->get('/admin/orders', 'Admin::orders');
 $routes->get('/admin/product', 'Admin::product');
 $routes->get('/admin/promotion', 'Admin::promotion');
 $routes->get('/admin/wallet', 'Admin::wallet');
 $routes->post('/admin/save', 'Admin::save');
+$routes->delete('/admin/(:num)', 'Admin::delete/$1');
 
 
 /*

@@ -1,4 +1,4 @@
-<?= $this->extend('pages/layouts/auth-layout') ?>
+<?= $this->extend('admin/layouts/admin-layout') ?>
 
 <?= $this->section('content') ?>
 <main class="h-full pb-16 overflow-y-auto">
