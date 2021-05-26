@@ -9,6 +9,7 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use App\Models\ProductsModel;
+use App\Models\UsersModel;
 
 /**
  * Class BaseController
@@ -47,6 +48,7 @@ class BaseController extends Controller
 	 * @param LoggerInterface   $logger
 	 */
 	protected $productModel;
+	protected $usersModel;
 
 	public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
 	{
@@ -60,6 +62,7 @@ class BaseController extends Controller
 		// E.g.: $this->session = \Config\Services::session();
 		session();
 		$this->productModel = new ProductsModel();
+		$this->usersModel = new UsersModel();
 
 	}
 }

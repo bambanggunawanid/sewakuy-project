@@ -83,7 +83,7 @@
         </nav>
         <div class="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-6 p-12">
             <?php foreach ($products as $p) : ?>
-                <div class="py-6 px-4 flex shadow-lg rounded-2xl max-w-md">
+                <div class="py-6 px-4 flex shadow-lg border-2 border-blue-600 rounded-2xl max-w-md">
                     <a href="/product/<?= $p['uuid'] ?>">
                         <img class="hover:grow hover:shadow-lg" src="<?= base_url("/image/image1/" . $p['image1']) ?>">
                         <div class="pt-3 flex items-center justify-between">

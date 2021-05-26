@@ -6,27 +6,35 @@ class Admin extends BaseController
 {
     public function index()
     {
-        $data = ['title' => 'Dashboard'];
+        $_SESSION['id'] = 1;
+        $_SESSION['userSession'] = $this->usersModel->getUser($_SESSION['id']);
+        $data = [
+            'title' => 'Dashboard',
+            'products' => $this->productModel->getProduct(),
+            'Allusers' => $this->usersModel->getUser(),
+            'user' => $_SESSION['userSession'],
+            'adminProduct' => $this->usersModel->joinProduct($_SESSION['id'])
+        ];
         echo view('admin/index', $data);
     }
     public function orders()
     {
-        $data = ['title' => 'Orders'];
+        $data = ['title' => 'Orders', 'user' => $_SESSION['userSession'],];
         echo view('admin/orders', $data);
     }
     public function product()
     {
-        $data = ['title' => 'Product'];
+        $data = ['title' => 'Product', 'user' => $_SESSION['userSession'],];
         echo view('admin/product', $data);
     }
     public function promotion()
     {
-        $data = ['title' => 'Promotion'];
+        $data = ['title' => 'Promotion', 'user' => $_SESSION['userSession'],];
         echo view('admin/promotion', $data);
     }
     public function wallet()
     {
-        $data = ['title' => 'My Wallet'];
+        $data = ['title' => 'My Wallet', 'user' => $_SESSION['userSession'],];
         echo view('admin/wallet', $data);
     }
     public function create()
@@ -50,11 +58,13 @@ class Admin extends BaseController
                     'required' => 'Product name cannot be empty'
                 ],
             ],
-            'stock' => 'required',
-            'weight' => 'required',
-        ])){
+            'product_price' => 'required',
+            'product_stock' => 'required',
+            'product_weight' => 'required',
+            'choose_category' => 'required',
+        ])) {
             $validation = \Config\Services::validation();
-            return redirect()->to('/admin/create')->withInput()->with('validation',$validation);
+            return redirect()->to('/admin/create')->withInput()->with('validation', $validation);
         }
         $this->productModel->save([
             'uuid' => md5(uniqid(time())),

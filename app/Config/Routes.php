@@ -48,6 +48,7 @@ $routes->get('/coming-soon', 'Pages::comingSoon');
 $routes->get('/login', 'Auth::index');
 $routes->post('/login', 'Auth::login');
 $routes->get('/register', 'Auth::register');
+$routes->post('/register', 'Auth::createAccount');
 $routes->get('/forgot-password', 'Auth::forgotPassword');
 
 // Admin

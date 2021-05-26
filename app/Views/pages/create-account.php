@@ -13,22 +13,26 @@
           <h1 class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
             Create account
           </h1>
-          <form action="#" method="post">
+          <form action="/register" method="post">
+          <?= csrf_field() ?>
             <label class="block text-sm">
               <span class="text-gray-700 dark:text-gray-400">Email</span>
               <input class="border-2 rounded-l block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="bambang@example.com" type="email" name="email" required />
+              <span class="<?= ($validation->hasError('email')) ? 'text-red-500' : 'hidden' ?>"><?= $validation->getError('email') ?></span>
             </label>
             <label class="block mt-4 text-sm">
               <span class="text-gray-700 dark:text-gray-400">Password</span>
               <input class="border-2 rounded-l block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:text-gray-300 dark:focus:shadow-outline-gray form-input" type="password" name="password" required />
+              <span class="<?= ($validation->hasError('password')) ? 'text-red-500' : 'hidden' ?>"><?= $validation->getError('password') ?></span>
             </label>
             <label class="block mt-4 text-sm">
               <span class="text-gray-700 dark:text-gray-400">Confirm Password</span>
-              <input class="border-2 rounded-l block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:text-gray-300 dark:focus:shadow-outline-gray form-input" type="password" name="password-confirm" required />
+              <input class="border-2 rounded-l block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:text-gray-300 dark:focus:shadow-outline-gray form-input" type="password" name="confpassword" />
+              <span class="<?= ($validation->hasError('confpassword')) ? 'text-red-500' : 'hidden' ?>"><?= $validation->getError('confpassword') ?></span>
             </label>
             <div class="flex mt-6 text-sm">
               <label class="flex items-center dark:text-gray-400">
-                <input type="checkbox" class="border-2 text-blue-600 form-checkbox focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray" />
+                <input type="checkbox" class="border-2 text-blue-600 form-checkbox focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray" name="agreePolicy" />
                 <span class="ml-2">
                   I agree to the
                   <span class="underline">privacy policy</span>

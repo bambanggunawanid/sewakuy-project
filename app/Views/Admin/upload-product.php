@@ -34,8 +34,6 @@
     <div class="grid grid-cols-1 mt-4 p-8 pb-12 md:min-w-1/2 min-w-full mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
         <h1 class="text-2xl text-gray-600 dark:text-white font-bold mb-2">Upload a New Product</h1>
         <p class="text-xs text-gray-400 dark:text-white mb-12">Choose the right category for your product and gift the best descriptions.</p>
-        <?= $validation->listErrors() ?>
-
         <form action="/admin/save" method="POST">
             <!-- Untuk menjaga agar formnya hanya bisa dikirim lewat halaman ini. Selain itu di block karena dianggap palsu -->
             <?= csrf_field() ?>
@@ -105,7 +103,7 @@
                     Product name
                 </span>
                 <div class="relative text-gray-500 focus-within:text-blue-600">
-                    <input class="block w-full pr-20 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray form-input <?= ($validation->hasError('product_name')) ? 'isInvalid' : '' ?>" onkeyup="getCombo(this)" id="t2t2" maxlength="30" name="product_name" value="<?= old('product_name') ?>"/>
+                    <input class="block w-full pr-20 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray form-input <?= ($validation->hasError('product_name')) ? 'isInvalid' : '' ?>" onkeyup="getCombo(this)" id="t2t2" maxlength="30" name="product_name"/>
                     <div class="font-light mt-2 absolute inset-y-0 right-0 px-4 text-xs leading-5">
                         | <span id="count_1" class="ml-1">0</span>/30
                     </div>
@@ -127,7 +125,7 @@
                         Weight
                     </span>
                     <div class="relative text-gray-500 focus-within:text-blue-600">
-                        <input class="block w-full pr-20 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray form-input" maxlength="13" name="product_wieght" />
+                        <input class="block w-full pr-20 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray form-input" maxlength="13" name="product_weight" />
                         <div class="font-light mt-2 absolute inset-y-0 right-0 px-4 text-xs leading-5">
                         </div>
                     </div>

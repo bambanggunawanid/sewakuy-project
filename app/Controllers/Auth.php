@@ -4,33 +4,32 @@ namespace App\Controllers;
 
 class Auth extends BaseController
 {
-    public function __construct()
-    {
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required');
-    }
     public function index()
     {
-        if ($this->session->userdata('email')) {
-            redirect('user');
-        }
-        if ($this->form_validation->run() == false) {
-            $data = ['title' => 'Login Account'];
-            return view('pages/login', $data);
-        } else {
-            //Ketika Succes... Cara Pak Dika kasih tau func private adalah dengan underskor
-            $this->_login();
-        }
+        $data = ['title' => 'Login Account', 'validation' => \Config\Services::validation()];
+        return view('pages/login', $data);
     }
     public function login()
     {
-        $data = ['title' => 'Login Account'];
-        return view('pages/login', $data);
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+        if (!$this->validate([
+            'email' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Product name cannot be empty',
+                ],
+            ],
+            'password' => 'required',
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('/login')->withInput()->with('validation', $validation);
+        }
     }
     public function register()
     {
-        $data = ['title' => 'Register Account'];
+        $data = ['title' => 'Register Account', 'validation' => \Config\Services::validation()];
+
         return view('pages/create-account', $data);
     }
     public function forgotPassword()
@@ -38,55 +37,23 @@ class Auth extends BaseController
         $data = ['title' => 'Forgot Password'];
         return view('pages/forgot-password', $data);
     }
-    // func to login logic
-    private function _login()
+    public function createAccount()
     {
-        $email = $this->input->post('email');
-        $password = $this->input->post('password');
-
-        // Jadi ini maksudnya, sebuah query get_where jika email = email pada db maka masuk ke auth/ auth success
-        $user = $this->db->get_where('user', ['email' => $email])->row_array();
-
-        if ($user) {
-            //user ada
-            if ($user['is_active'] == 1) {
-
-                //jika usernya sudah active
-                if (password_verify($password, $user['password'])) {
-
-                    //jika benar maka :
-                    $data = [
-                        'email' => $user['email'],
-                        'role_id' => $user['role_id']
-                    ];
-
-                    //memasukkan data ke dalam session
-                    $this->session->set_userdata($data);
-                    if ($user['role_id'] == 1) {
-
-                        //jika dia admin maka
-                        redirect('admin');
-                    } else {
-                        redirect('user');
-                    }
-                    redirect('user');
-                } else {
-
-                    //jika salah maka :
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Failed, Wrong Password!</div>');
-                    redirect('auth');
-                }
-            } else {
-
-                //jika belum maka :
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Failed, Your Account not Activated</div>');
-                redirect('auth');
-            }
-        } else {
-
-            //user tidak ada
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Failed, Your Account not Registered</div>');
-            redirect('auth');
+        //set rules validation form
+        $rules = [
+            'email'         => 'required|min_length[6]|max_length[50]|valid_email|is_unique[users.email]',
+            'password'      => 'required|min_length[6]|max_length[200]',
+            'confpassword'  => 'matches[password]'
+        ];
+        if (!$this->validate($rules)) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('/register')->withInput()->with('validation', $validation);
         }
+        $this->usersModel->save([
+            'email'    => $this->request->getVar('email'),
+            'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
+        ]);
+        session()->setFlashdata('pesan', 'New account has created');
+        return redirect()->to('/login');
     }
 }
