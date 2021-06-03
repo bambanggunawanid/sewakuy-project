@@ -14,20 +14,30 @@ class Auth extends BaseController
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
         if (!$this->validate([
-            'email' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Product name cannot be empty',
-                ],
-            ],
+            'email' => 'required',
             'password' => 'required',
         ])) {
             $validation = \Config\Services::validation();
             return redirect()->to('/login')->withInput()->with('validation', $validation);
         }
-        session();
-        // $_SESSION['id'] =
-        return redirect()->to('/');
+        $user = $this->usersModel->findUser($email);
+        if (isset($user)) {
+            if (password_verify($password, $user['password'])) {
+                $newdata = [
+                    'id'  => $user['id'],
+                    'fullname'  => $user['fullname'],
+                    'email'     => $user['email'],
+                    'avatar'     => $user['avatar'],
+                    'logged_in' => TRUE,
+                    'is_admin' => $user['isAdmin'],
+                    'balance' => $user['balance'],
+                ];
+                session()->set($newdata);
+                return redirect()->to('/');
+            }
+        }
+        session()->setFlashdata('cantLogin', 'Email or Password is wrong');
+        return redirect()->to('/login');
     }
     public function register()
     {
@@ -56,7 +66,11 @@ class Auth extends BaseController
             'email'    => $this->request->getVar('email'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
         ]);
-        session()->setFlashdata('pesan', 'New account has created');
+        session()->setFlashdata('pesan', 'Your new account has created');
         return redirect()->to('/login');
+    }
+    public function logout(){
+        session()->destroy();
+        return redirect()->to('/');
     }
 }

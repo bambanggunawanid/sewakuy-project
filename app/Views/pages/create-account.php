@@ -30,15 +30,6 @@
               <input class="border-2 rounded-l block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:text-gray-300 dark:focus:shadow-outline-gray form-input" type="password" name="confpassword" />
               <span class="<?= ($validation->hasError('confpassword')) ? 'text-red-500' : 'hidden' ?>"><?= $validation->getError('confpassword') ?></span>
             </label>
-            <div class="flex mt-6 text-sm">
-              <label class="flex items-center dark:text-gray-400">
-                <input type="checkbox" class="border-2 text-blue-600 form-checkbox focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray" name="agreePolicy" />
-                <span class="ml-2">
-                  I agree to the
-                  <span class="underline">privacy policy</span>
-                </span>
-              </label>
-            </div>
 
             <!-- You should use a button here, as the anchor is only used for the example  -->
             <button type="submit" class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue" href="./login.html">

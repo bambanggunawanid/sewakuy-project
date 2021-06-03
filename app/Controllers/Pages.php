@@ -6,6 +6,9 @@ class Pages extends BaseController
 {
     public function index()
     {
+        if (!session()->has('logged_in')) {
+            return redirect()->to('/login');
+        }
         $data = [
             'title' => 'About us',
         ];

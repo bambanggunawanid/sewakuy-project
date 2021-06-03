@@ -50,6 +50,7 @@ $routes->post('/login', 'Auth::login');
 $routes->get('/register', 'Auth::register');
 $routes->post('/register', 'Auth::createAccount');
 $routes->get('/forgot-password', 'Auth::forgotPassword');
+$routes->get('/logout', 'Auth::logout');
 
 // Admin
 $routes->get('/admin', 'Admin::index');

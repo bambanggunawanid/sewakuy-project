@@ -4,44 +4,57 @@ namespace App\Controllers;
 
 class Admin extends BaseController
 {
-    public function __construct()
-    {
-        $_SESSION['id'] = 1;
-    }
     public function index()
     {
-        $_SESSION['userSession'] = $this->usersModel->getUser($_SESSION['id']);
+        if (!session()->has('logged_in')) {
+            return redirect()->to('/login');
+        }
         $data = [
             'title' => 'Dashboard',
             'products' => $this->productModel->getProduct(),
             'Allusers' => $this->usersModel->getUser(),
-            'user' => $_SESSION['userSession'],
-            'adminProduct' => $this->usersModel->joinProduct($_SESSION['id'])
+            'user' => $this->usersModel->getUser(session('id')),
+            'adminProduct' => $this->usersModel->joinProduct(session('id'))
         ];
         echo view('admin/index', $data);
     }
     public function orders()
     {
-        $data = ['title' => 'Orders', 'user' => $_SESSION['userSession'],];
+        if (!session()->has('logged_in')) {
+            return redirect()->to('/login');
+        }
+        $data = ['title' => 'Orders'];
         echo view('admin/orders', $data);
     }
     public function product()
     {
-        $data = ['title' => 'Product', 'user' => $_SESSION['userSession'],];
+        if (!session()->has('logged_in')) {
+            return redirect()->to('/login');
+        }
+        $data = ['title' => 'Product', 'adminProduct' => $this->usersModel->joinProduct(session('id'))];
         echo view('admin/product', $data);
     }
     public function promotion()
     {
-        $data = ['title' => 'Promotion', 'user' => $_SESSION['userSession'],];
+        if (!session()->has('logged_in')) {
+            return redirect()->to('/login');
+        }
+        $data = ['title' => 'Promotion'];
         echo view('admin/promotion', $data);
     }
     public function wallet()
     {
-        $data = ['title' => 'My Wallet', 'user' => $_SESSION['userSession'],];
+        if (!session()->has('logged_in')) {
+            return redirect()->to('/login');
+        }
+        $data = ['title' => 'My Wallet'];
         echo view('admin/wallet', $data);
     }
     public function create()
     {
+        if (!session()->has('logged_in')) {
+            return redirect()->to('/login');
+        }
         $data = [
             'title' => 'Upload new Product',
             'validation' => \Config\Services::validation()
@@ -50,10 +63,27 @@ class Admin extends BaseController
     }
     public function save()
     {
-        $_SESSION['id'] = 1;
         // Validation input create product form
         if (!$this->validate([
             'image_1' => [
+                'rules' => 'uploaded[image_1]|max_size[image_1,1024]|is_image[image_1]|mime_in[image_1,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'images must be uploaded',
+                    'max_size' => 'file size is over weight',
+                    'is_image' => 'file not an image',
+                    'mime_in' => 'file not an image',
+                ]
+            ],
+            'image_2' => [
+                'rules' => 'uploaded[image_1]|max_size[image_1,1024]|is_image[image_1]|mime_in[image_1,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'images must be uploaded',
+                    'max_size' => 'file size is over weight',
+                    'is_image' => 'file not an image',
+                    'mime_in' => 'file not an image',
+                ]
+            ],
+            'image_3' => [
                 'rules' => 'uploaded[image_1]|max_size[image_1,1024]|is_image[image_1]|mime_in[image_1,image/jpg,image/jpeg,image/png]',
                 'errors' => [
                     'uploaded' => 'images must be uploaded',
@@ -91,7 +121,7 @@ class Admin extends BaseController
 
         $this->productModel->save([
             'uuid' => md5(uniqid(time())),
-            'user_id' => "1",
+            'user_id' => session('id'),
             'name' => $this->request->getVar('product_name'),
             'price' => $this->request->getVar('product_price'),
             'image1' => $image_name,
@@ -115,6 +145,9 @@ class Admin extends BaseController
 
     public function edit($uuid)
     {
+        if (!session()->has('logged_in')) {
+            return redirect()->to('/login');
+        }
         $data = [
             'title' => 'Edit Product',
             'validation' => \Config\Services::validation(),
@@ -128,7 +161,7 @@ class Admin extends BaseController
         // dd($id);
         $this->productModel->save([
             'id' => $id,
-            'user_id' => $_SESSION['id'],
+            'user_id' => session('id'),
             'name' => $this->request->getVar('product_name'),
             'price' => $this->request->getVar('product_price'),
             'image1' => $this->request->getVar('image_1'),

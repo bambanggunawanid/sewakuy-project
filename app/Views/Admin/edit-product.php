@@ -53,14 +53,14 @@
                 <div class="flex flex-col text-center">
                     <label class="coba my-2 w-36 h-24 flex flex-col items-center bg-white text-blue rounded-lg tracking-wide uppercase border-2 border-blue-600 cursor-pointer hover:bg-blue-50 overflow-hidden">
                         <img id="img_t2" src="" width="100%" alt="" class="object-cover center">
-                        <input name="image_2" type="file" class="t6t6 w-12" id="input_2" accept="image/*" onchange="previewFile2()" required <?= $product['image2'] ?> />
+                        <input name="image_2" type="file" class="t6t6 w-12" id="input_2" accept="image/*" onchange="previewFile2()" <?= $product['image2'] ?> />
                     </label>
                     <span class="text-xs text-gray-500">Photo 2</span>
                 </div>
                 <div class="flex flex-col text-center">
                     <label class="coba my-2 w-36 h-24 flex flex-col items-center bg-white text-blue rounded-lg tracking-wide uppercase border-2 border-blue-600 cursor-pointer hover:bg-blue-50 overflow-hidden">
                         <img id="img_t3" src="" width="100%" alt="" class="object-cover center">
-                        <input name="image_3" type="file" class="t6t6 w-12" id="input_3" accept="image/*" onchange="previewFile3()" required <?= $product['image3'] ?> />
+                        <input name="image_3" type="file" class="t6t6 w-12" id="input_3" accept="image/*" onchange="previewFile3()" <?= $product['image3'] ?> />
                     </label>
                     <span class="text-xs text-gray-500">Photo 3</span>
                 </div>

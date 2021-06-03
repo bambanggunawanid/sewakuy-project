@@ -20,10 +20,9 @@ class Products extends BaseController
             'title' => "tes",
             'product' => $productDetail,
         ];
-        if(empty($uuid)){
+        if (empty($uuid)) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Your product not found');
         }
         return view('product/detail', $data);
     }
-
 }

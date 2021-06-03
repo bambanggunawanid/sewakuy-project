@@ -17,6 +17,13 @@ class UsersModel extends Model
         }
         return $this->where(['id' => $id])->first();
     }
+    public function findUser($email = false)
+    {
+        if ($email == false) {
+            return $this->findAll();
+        }
+        return $this->where(['email' => $email])->first();
+    }
     public function joinProduct($id)
     {
         if ($id == false) {

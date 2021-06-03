@@ -75,18 +75,20 @@
 <body class="bg-white text-gray-600 antialiased work-sans leading-normal text-base tracking-normal">
     <!--Nav-->
     <div class="w-full container-fluid bg-blue-600 md:flex text-white text-xs py-2 justify-end hidden">
-        <a href="/coming-soon">
-            <p class="mx-4 hover:underline">Tentang Sewakuy</p>
-        </a>
-        <a href="/coming-soon">
-            <p class="mx-4 hover:underline">Mitra Sewakuy</p>
-        </a>
-        <a href="/coming-soon">
-            <p class="mx-4 hover:underline">Sewakuy Care</p>
-        </a>
-        <a href="/admin">
-            <p class="mx-4 hover:underline">Admin Dashboard</p>
-        </a>
+        <div class="flex">
+            <a href="/coming-soon">
+                <p class="mx-4 hover:underline">Tentang Sewakuy</p>
+            </a>
+            <a href="/coming-soon">
+                <p class="mx-4 hover:underline">Mitra Sewakuy</p>
+            </a>
+            <a href="/coming-soon">
+                <p class="mx-4 hover:underline">Sewakuy Care</p>
+            </a>
+            <a href="/admin">
+                <p class="mx-4 hover:underline">Admin Dashboard</p>
+            </a>
+        </div>
     </div>
     <nav id="header" class="w-full z-30 top-0 py-1">
         <div class="min-w-full mx-auto flex items-center justify-between px-4 md:px-6 py-2 flex-wrap">
@@ -101,19 +103,48 @@
             <div class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
                 <nav>
                     <ul class="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
-                        <li class="md:mx-4 md:my-0 my-4"><a href="/login" class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-blue-600 hover:text-white transition-colors duration-150 border-2 border-blue-600 rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-                                </svg>
-                                <span>Login</span>
-                            </a></li>
+                        <?php if (session('logged_in') == null) : ?>
+                            <li class="md:mx-4 md:my-0 my-4"><a href="/login" class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-blue-600 hover:text-white transition-colors duration-150 border-2 border-blue-600 rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                                    </svg>
+                                    <span>Login</span>
+                                </a></li>
 
-                        <li><a href="/register" class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-                                </svg>
-                                <span>Register</span>
-                            </a></li>
+                            <li><a href="/register" class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                                    </svg>
+                                    <span>Register</span>
+                                </a></li>
+                        <?php else : ?>
+                            <p class="hidden md:block font-bold text-md text-gray-500 dark:text-white mx-4"><?= session('fullname') ?></p>
+                            <li class="relative flex">
+                                <button class="align-middle rounded-full focus:shadow-outline-blue focus:outline-none" @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account" aria-haspopup="true">
+                                    <img class="object-cover w-8 h-8 rounded-full" src="<?= base_url("assets/img/" . session('avatar')) ?>" alt="" aria-hidden="true" />
+                                </button>
+                                <template x-if="isProfileMenuOpen">
+                                    <ul x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click.away="closeProfileMenu" @keydown.escape="closeProfileMenu" class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700 z-50" aria-label="submenu">
+                                        <li class="flex">
+                                            <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200" href="#">
+                                                <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                                </svg>
+                                                <span>Profile</span>
+                                            </a>
+                                        </li>
+                                        <li class="flex">
+                                            <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200" href="/logout">
+                                                <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+                                                </svg>
+                                                <span>Log out</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </template>
+                            </li>
+                        <?php endif ?>
                     </ul>
                 </nav>
             </div>
