@@ -7,6 +7,9 @@ class Admin extends BaseController
     public function index()
     {
         if (!session()->has('logged_in')) {
+            if(session('is_admin')==0){
+                return redirect()->to('/');
+            }
             return redirect()->to('/login');
         }
         $data = [
@@ -21,6 +24,9 @@ class Admin extends BaseController
     public function orders()
     {
         if (!session()->has('logged_in')) {
+            if(session('is_admin')==0){
+                return redirect()->to('/');
+            }
             return redirect()->to('/login');
         }
         $data = ['title' => 'Orders'];
@@ -29,6 +35,9 @@ class Admin extends BaseController
     public function product()
     {
         if (!session()->has('logged_in')) {
+            if(session('is_admin')==0){
+                return redirect()->to('/');
+            }
             return redirect()->to('/login');
         }
         $data = ['title' => 'Product', 'adminProduct' => $this->usersModel->joinProduct(session('id'))];
@@ -37,6 +46,9 @@ class Admin extends BaseController
     public function promotion()
     {
         if (!session()->has('logged_in')) {
+            if(session('is_admin')==0){
+                return redirect()->to('/');
+            }
             return redirect()->to('/login');
         }
         $data = ['title' => 'Promotion'];
@@ -45,6 +57,9 @@ class Admin extends BaseController
     public function wallet()
     {
         if (!session()->has('logged_in')) {
+            if(session('is_admin')==0){
+                return redirect()->to('/');
+            }
             return redirect()->to('/login');
         }
         $data = ['title' => 'My Wallet'];
@@ -53,6 +68,9 @@ class Admin extends BaseController
     public function create()
     {
         if (!session()->has('logged_in')) {
+            if(session('is_admin')==0){
+                return redirect()->to('/');
+            }
             return redirect()->to('/login');
         }
         $data = [
