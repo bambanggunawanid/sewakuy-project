@@ -1,4 +1,4 @@
-<!-- <?= $this->extend('pages/layouts/main-layout') ?> -->
+<?= $this->extend('pages/layouts/main-layout') ?>
 <?= $this->section('content') ?>
 <div class="py-6">
   <!-- Breadcrumbs -->
@@ -27,7 +27,7 @@
               <img src="<?= base_url("/image/image2/" . $product['image2']) ?>" alt="">
             </div>
             <div x-show="image === 3" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-              <img src="<?= base_url("/image/image3/" . $product['image3']) ?>" alt="" >
+              <img src="<?= base_url("/image/image3/" . $product['image3']) ?>" alt="">
             </div>
           </div>
 
@@ -35,7 +35,7 @@
             <?php for ($i = 1; $i <= 3; $i++) : ?>
               <div class="flex-1 px-2 ">
                 <button x-on:click="image = <?= $i ?>" :class="{ 'ring-2 ring-blue-300 ring-inset': image === <?= $i ?> }" class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center overflow-hidden hover:opacity-75">
-                  <img src="<?= base_url("/image/image" . $i . "/" . $product['image' . $i]) ?>" alt="" >
+                  <img src="<?= base_url("/image/image" . $i . "/" . $product['image' . $i]) ?>" alt="">
                 </button>
               </div>
             <?php endfor ?>
@@ -55,11 +55,12 @@
           </div>
         </div>
         <p class="text-gray-500 mb-20 md:mb-36"><?= $product['descriptions'] ?></p>
-        <form action="#" method="get">
-          <div class="flex py-4 space-x-4">
+        <!-- Form -->
+        <form action="/cart/save" method="post">
+          <div class="flex space-x-4">
             <div class="relative">
               <div class="text-center left-0 pt-2 right-0 absolute block text-xs uppercase text-gray-400 tracking-wide font-semibold">Qty</div>
-              <select class="cursor-pointer appearance-none rounded-xl border border-gray-200 pl-4 pr-8 h-14 flex items-end pb-1">
+              <select name="quantity" class="cursor-pointer appearance-none rounded-xl border border-gray-200 pl-4 pr-8 h-14 flex items-end pb-1">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -71,9 +72,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
               </svg>
             </div>
-            <button type="submit" class="md:h-14 md:px-6 md:py-2 font-semibold rounded-xl border-2 border-blue-600 text-blue-600 hover:bg-blue-500 hover:text-white flex-1">
-              Buy Now
-            </button>
+            <input type="hidden" name="product_uuid" id="product_uuid" value="<?= $product['uuid'] ?>">
             <button type="submit" class="md:h-14 md:px-6 md:py-2 font-semibold rounded-xl bg-blue-600 hover:bg-blue-500 text-white flex-1">
               Add to Cart
             </button>

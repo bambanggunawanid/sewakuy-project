@@ -22,11 +22,11 @@ module.exports = {
           borderRadius: theme("borderRadius.lg"),
           boxShadow: theme("boxShadow.default"),
         },
-        checkbox: {
-          backgroundColor: theme("colors.gray.50"),
-          width: theme("spacing.6"),
-          height: theme("spacing.6"),
-        },
+        // checkbox: {
+        //   backgroundColor: theme("colors.gray.50"),
+        //   width: theme("spacing.6"),
+        //   height: theme("spacing.6"),
+        // },
         radio: {
           backgroundColor: theme("colors.gray.50"),
         },
@@ -215,6 +215,10 @@ module.exports = {
     borderColor: ["focus", "hover", "dark", "dark:focus", "dark:hover"],
     divideColor: ["dark"],
     boxShadow: ["focus", "dark:focus"],
+    extend: {
+      backgroundColor: ['checked'],
+      borderColor: ['checked'],
+    }
   },
   plugins: [
     require("tailwindcss-multi-theme"),

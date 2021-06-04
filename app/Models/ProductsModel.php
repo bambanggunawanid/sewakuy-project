@@ -17,4 +17,8 @@ class ProductsModel extends Model
         }
         return $this->where(['uuid' => $uuid])->first();
     }
+    public function searchProduct($name)
+    {
+        return $this->like('name', $name)->find();
+    }
 }

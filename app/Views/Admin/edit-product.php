@@ -36,7 +36,7 @@
         <h1 class="text-2xl text-gray-600 dark:text-white font-bold mb-2">Edit Product</h1>
         <p class="text-xs text-gray-400 dark:text-white mb-12">Customize your product and grab an order.</p>
         <form action="/admin/update/<?= $product['id'] ?>" method="POST">
-        <input type="hidden" name="uuid" value="<?= $product['uuid'] ?>">
+        <input type="hidden" name="user_id" value="<?= session('id') ?>">
             <!-- Untuk menjaga agar formnya hanya bisa dikirim lewat halaman ini. Selain itu di block karena dianggap palsu -->
             <?= csrf_field() ?>
             <span class="text-gray-700 dark:text-gray-400 block text-sm mb-2">

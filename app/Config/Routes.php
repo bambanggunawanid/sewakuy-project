@@ -38,6 +38,10 @@ $routes->setAutoRoute(true);
 // Products
 $routes->get('/', 'Products::index');
 $routes->get('/product/(:segment)', 'Products::detail/$1');
+$routes->get('/search', 'Products::search');
+$routes->get('/cart', 'Products::cart');
+$routes->post('/cart/save', 'Products::addToCart');
+$routes->delete('/cart/(:segment)', 'Products::removeCartProduct/$1');
 
 // Pages
 $routes->get('/about', 'Pages::about');

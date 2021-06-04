@@ -121,7 +121,7 @@ class Admin extends BaseController
 
         $this->productModel->save([
             'uuid' => md5(uniqid(time())),
-            'user_id' => session('id'),
+            'user_id' => $this->request->getVar('user_id'),
             'name' => $this->request->getVar('product_name'),
             'price' => $this->request->getVar('product_price'),
             'image1' => $image_name,
@@ -161,7 +161,7 @@ class Admin extends BaseController
         // dd($id);
         $this->productModel->save([
             'id' => $id,
-            'user_id' => session('id'),
+            'user_id' => $this->request->getVar('user_id'),
             'name' => $this->request->getVar('product_name'),
             'price' => $this->request->getVar('product_price'),
             'image1' => $this->request->getVar('image_1'),

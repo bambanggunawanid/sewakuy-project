@@ -35,7 +35,7 @@
         <h1 class="text-2xl text-gray-600 dark:text-white font-bold mb-2">Upload a New Product</h1>
         <p class="text-xs text-gray-400 dark:text-white mb-12">Choose the right category for your product and gift the best descriptions.</p>
         <form action="/admin/save" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="id_user" id="id_user" value="1">
+        <input type="hidden" name="user_id" id="user_id" value="<?= session('id') ?>">
             <!-- Untuk menjaga agar formnya hanya bisa dikirim lewat halaman ini. Selain itu di block karena dianggap palsu -->
             <?= csrf_field() ?>
             <span class="text-gray-700 dark:text-gray-400 block text-sm mb-2">
