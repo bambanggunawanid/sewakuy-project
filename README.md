@@ -1,4 +1,4 @@
-A React admin dashboard built using tailwindcss
+A Online Marketplace built using Tailwindcss and Codeigniter
 
 Demo: https://sewakuy.heliohost.us/
 
