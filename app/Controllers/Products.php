@@ -39,6 +39,9 @@ class Products extends BaseController
     }
     public function addToCart()
     {
+        if (!session()->has('logged_in')) {
+            return redirect()->to('/login');
+        }
         $this->cartModel->save([
             'user_id' => session('id'),
             'product_uuid' => $this->request->getVar('product_uuid'),
